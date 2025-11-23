@@ -1,0 +1,80 @@
+{{- define "main" }}
+
+<article class="contact-page" style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
+  <!-- Header -->
+  <header style="text-align: center; margin-bottom: 4rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">{{ .Title }}</h1>
+    <p style="font-size: 1.25rem; color: var(--secondary); max-width: 600px; margin: 0 auto;">
+      I'm always open to discussing new projects, creative ideas, or opportunities.
+    </p>
+  </header>
+
+  <!-- Content -->
+  <div class="contact-content" style="line-height: 1.8;">
+    {{ .Content }}
+  </div>
+
+  <!-- Quick Response Promise -->
+  <div style="margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, var(--code-bg) 0%, var(--entry) 100%); border-radius: 8px; text-align: center; border: 1px solid var(--border);">
+    <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+      <strong>Quick Response Guarantee</strong>
+    </p>
+    <p style="color: var(--secondary);">
+      I typically respond to all inquiries within 24-48 hours. Looking forward to hearing from you!
+    </p>
+  </div>
+
+  <!-- Additional Resources -->
+  <div style="margin-top: 4rem;">
+    <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem;">More About Me</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <a href="/projects/" style="padding: 2rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--content); transition: all 0.3s; display: block;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">💼</div>
+        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Portfolio</h3>
+        <p style="color: var(--secondary); font-size: 0.95rem;">Browse my technical art projects and tools</p>
+      </a>
+      
+      <a href="/cv/" style="padding: 2rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--content); transition: all 0.3s; display: block;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Resume</h3>
+        <p style="color: var(--secondary); font-size: 0.95rem;">View my complete professional experience</p>
+      </a>
+      
+      <a href="/about/" style="padding: 2rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--content); transition: all 0.3s; display: block;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">👨‍💻</div>
+        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">About</h3>
+        <p style="color: var(--secondary); font-size: 0.95rem;">Learn about my approach and philosophy</p>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+.contact-content h2 {
+  color: var(--primary);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+}
+
+.contact-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.contact-content a:hover {
+  color: var(--primary);
+}
+
+.contact-page a[href^="/"] {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-page a[href^="/"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+</style>
+
+{{- end }}

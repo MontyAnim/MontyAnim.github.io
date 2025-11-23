@@ -4,27 +4,28 @@ title = 'Diego Montúfar Portfolio'
 theme = 'PaperMod'
 
 [params]
-  description = "Diego Montúfar's Portfolio"
+  description = "Technical Artist specializing in tools, shaders, and pipeline development for games and VFX"
   author = "Diego Montúfar"
+  keywords = ["Technical Artist", "Game Development", "Shaders", "Python", "Unity", "Maya", "Pipeline Tools"]
   ShowReadingTime = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = false
   UseHugoToc = true
   disableSpecial1stPost = false
   disableScrollToTop = false
   comments = false
   hidemeta = false
   hideSummary = false
-  showtoc = false
+  showtoc = true
   tocopen = false
 
 [params.homeInfoParams]
-  Title = "Hi there 👋"
-  Content = "Welcome to my portfolio"
+  Title = "Diego Montúfar Pérez"
+  Content = "Technical Artist bridging art and code through tools, shaders, and pipeline development"
 
 [[params.socialIcons]]
   name = "github"
@@ -36,6 +37,11 @@ theme = 'PaperMod'
     name = "About"
     url = "/about/"
     weight = 10
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/cv/"
+    weight = 15
   [[menu.main]]
     identifier = "projects"
     name = "Projects"

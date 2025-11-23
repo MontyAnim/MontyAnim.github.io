@@ -1,0 +1,126 @@
+{{- define "main" }}
+
+<div class="projects-page" style="max-width: 1400px; margin: 0 auto; padding: 2rem;">
+  <header class="page-header" style="margin-bottom: 3rem; text-align: center;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">Projects</h1>
+    <p style="font-size: 1.25rem; color: var(--secondary);">Technical Art & Development Work</p>
+  </header>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+    <button class="filter-btn active" data-filter="all" style="padding: 0.75rem 1.5rem; background: var(--primary); color: var(--content); border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+      All Projects
+    </button>
+    <button class="filter-btn" data-filter="tool" style="padding: 0.75rem 1.5rem; background: var(--code-bg); color: var(--content); border: 2px solid var(--border); border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+      Tools & Scripts
+    </button>
+    <button class="filter-btn" data-filter="visual" style="padding: 0.75rem 1.5rem; background: var(--code-bg); color: var(--content); border: 2px solid var(--border); border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+      Visuals & Shaders
+    </button>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+    {{- range where .Site.RegularPages "Section" "projects" }}
+    <article class="project-card" data-type="{{ .Params.project_type }}" style="background: var(--entry); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+      <a href="{{ .Permalink }}" style="text-decoration: none; color: inherit; display: block;">
+        <!-- Thumbnail -->
+        <div class="project-thumbnail" style="width: 100%; height: 250px; background: var(--code-bg); position: relative; overflow: hidden;">
+          {{- if .Params.thumbnail_url }}
+          <img src="{{ .Params.thumbnail_url }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          {{- else }}
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--border);">
+            {{ if eq .Params.project_type "tool" }}🔧{{ else }}🎨{{ end }}
+          </div>
+          {{- end }}
+          
+          <!-- Project Type Badge -->
+          <div class="project-type-badge" style="position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: var(--primary-text); border-radius: 4px; font-size: 0.875rem; font-weight: 600; text-transform: uppercase;">
+            {{ if eq .Params.project_type "tool" }}Tool{{ else }}Visual{{ end }}
+          </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="project-content" style="padding: 1.5rem;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">{{ .Title }}</h3>
+          
+          {{- if .Params.summary }}
+          <p style="color: var(--secondary); margin-bottom: 1rem; line-height: 1.6;">{{ .Params.summary }}</p>
+          {{- else }}
+          <p style="color: var(--secondary); margin-bottom: 1rem; line-height: 1.6;">{{ .Summary }}</p>
+          {{- end }}
+          
+          <!-- Tech Stack Badges -->
+          {{- if .Params.tech_stack }}
+          <div class="tech-badges" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+            {{- range .Params.tech_stack }}
+            <span style="padding: 0.25rem 0.75rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem; font-family: 'Courier New', monospace;">
+              {{ . }}
+            </span>
+            {{- end }}
+          </div>
+          {{- end }}
+        </div>
+      </a>
+    </article>
+    {{- end }}
+  </div>
+
+  {{- if eq (len (where .Site.RegularPages "Section" "projects")) 0 }}
+  <div class="no-projects" style="text-align: center; padding: 4rem 2rem; background: var(--code-bg); border-radius: 8px; margin-top: 2rem;">
+    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">No projects yet</h3>
+    <p style="color: var(--secondary);">Projects will appear here once they are added.</p>
+  </div>
+  {{- end }}
+</div>
+
+<style>
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover {
+  background: var(--primary);
+  color: var(--content);
+  border-color: var(--primary);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--content);
+  border-color: var(--primary);
+}
+
+.project-card[style*="display: none"] {
+  display: none !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      const filter = this.dataset.filter;
+      
+      // Filter projects
+      projectCards.forEach(card => {
+        if (filter === 'all' || card.dataset.type === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+
+{{- end }}

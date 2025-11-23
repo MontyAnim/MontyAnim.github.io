@@ -1,0 +1,22 @@
+{{- $demo := .Get "demo" -}}
+{{- $title := .Get "title" | default "Interactive Demo" -}}
+{{- $height := .Get "height" | default "600px" -}}
+
+<div class="webgl-demo-container" style="margin: 2rem auto; max-width: 100%;">
+  {{- if $title -}}
+  <div class="demo-title" style="margin-bottom: 0.5rem; font-weight: bold; color: var(--primary);">
+    {{ $title }}
+  </div>
+  {{- end -}}
+  <div class="demo-frame" style="position: relative; width: 100%; height: {{ $height }}; border: 1px solid var(--border); border-radius: 4px; overflow: hidden;">
+    <iframe 
+      src="/demos/{{ $demo }}/index.html"
+      style="width: 100%; height: 100%; border: none;"
+      title="{{ $title }}"
+      loading="lazy">
+    </iframe>
+  </div>
+  <div class="demo-caption" style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--secondary); text-align: center;">
+    Interactive demo - Click and drag to interact
+  </div>
+</div>
