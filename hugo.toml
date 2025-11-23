@@ -1,0 +1,51 @@
+baseURL = 'https://montyanim.github.io/'
+languageCode = 'en-us'
+title = 'Diego Montúfar Portfolio'
+theme = 'PaperMod'
+
+[params]
+  description = "Diego Montúfar's Portfolio"
+  author = "Diego Montúfar"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+
+[params.homeInfoParams]
+  Title = "Hi there 👋"
+  Content = "Welcome to my portfolio"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/MontyAnim"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 20
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
