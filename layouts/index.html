@@ -2,7 +2,7 @@
 
 <section class="hero-section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
   <!-- Subtle background -->
-  <div class="hero-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; background: repeating-linear-gradient(0deg, #000 0px, #000 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, #000 0px, #000 1px, transparent 1px, transparent 2px); background-size: 20px 20px;"></div>
+  <div class="hero-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.07; background: repeating-linear-gradient(0deg, var(--content) 0px, var(--content) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, var(--content) 0px, var(--content) 1px, transparent 1px, transparent 2px); background-size: 20px 20px;"></div>
   
   <div class="hero-content" style="position: relative; z-index: 1; text-align: center; max-width: 800px; padding: 2rem;">
     <h1 style="font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
@@ -47,24 +47,48 @@
 </style>
 
 <!-- Projects Section -->
-<section id="projects" style="padding: 4rem 2rem;">
-  <div class="container" style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Featured Projects</h2>
-    
-    {{- if .Site.Params.homeInfoParams }}
-    {{- with .Site.Params.homeInfoParams.Content }}
-    <div class="intro-content" style="text-align: center; margin-bottom: 3rem; font-size: 1.125rem; color: var(--secondary);">
-      {{ . | markdownify }}
+<section id="projects" style="padding: 6rem 2rem; background: var(--code-bg);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Featured Projects</h2>
+    <p style="text-align: center; color: var(--secondary); margin-bottom: 4rem; font-size: 1.125rem;">Technical Art &amp; Development Work</p>
+
+    {{- $projects := where .Site.RegularPages "Section" "projects" }}
+    {{- if $projects }}
+    <div class="featured-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+      {{- range first 3 $projects }}
+      <a href="{{ .Permalink }}" class="featured-card" style="background: var(--entry); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; display: block;">
+        <div style="height: 200px; overflow: hidden; background: var(--border);">
+          {{- if .Params.thumbnail_url }}
+          <img src="{{ .Params.thumbnail_url }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          {{- else }}
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">{{ .Params.project_type | default "project" }}</div>
+          {{- end }}
+        </div>
+        <div style="padding: 1.5rem;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">{{ .Title }}</h3>
+          <p style="color: var(--secondary); font-size: 0.9rem; line-height: 1.6;">{{ .Params.summary | default .Summary }}</p>
+        </div>
+      </a>
+      {{- end }}
     </div>
     {{- end }}
-    {{- end }}
-    
-    <!-- Project grid will be rendered here -->
-    <div class="project-notice" style="text-align: center; padding: 3rem; background: var(--code-bg); border-radius: 8px;">
-      <p style="font-size: 1.25rem; margin-bottom: 1rem;">Projects coming soon!</p>
-      <p style="color: var(--secondary);">Check back later to see my technical art work.</p>
+
+    <div style="text-align: center;">
+      <a href="/projects/" style="padding: 1rem 2.5rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 1.125rem; display: inline-block; transition: transform 0.2s;">
+        {{- if $projects }}View All Projects{{- else }}Explore My Work{{- end }}
+      </a>
     </div>
   </div>
 </section>
+
+<style>
+.featured-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+</style>
 
 {{- end }}
