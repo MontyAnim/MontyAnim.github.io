@@ -2,10 +2,16 @@
 name: Deploy Hugo site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Deploy to Pages only on pushes to main (production)
   push:
     branches:
       - main
+
+  # Run build-only CI check on develop and feature branches (no deploy)
+  pull_request:
+    branches:
+      - main
+      - develop
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -64,8 +70,9 @@ jobs:
         with:
           path: ./public
 
-  # Deployment job
+  # Deployment job — only runs on pushes to main, not on PRs
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
