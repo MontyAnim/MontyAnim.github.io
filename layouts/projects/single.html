@@ -1,0 +1,208 @@
+{{- define "main" }}
+
+<article class="project-single">
+  <!-- Hero Section -->
+  <div class="project-hero" style="margin: -2rem -2rem 3rem -2rem; padding: 4rem 2rem; background: linear-gradient(135deg, var(--code-bg) 0%, var(--entry) 100%); border-bottom: 2px solid var(--border);">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <!-- Breadcrumb -->
+      <nav style="margin-bottom: 2rem; font-size: 0.875rem;">
+        <a href="/" style="color: var(--secondary); text-decoration: none;">Home</a>
+        <span style="color: var(--border); margin: 0 0.5rem;">/</span>
+        <a href="/projects/" style="color: var(--secondary); text-decoration: none;">Projects</a>
+        <span style="color: var(--border); margin: 0 0.5rem;">/</span>
+        <span style="color: var(--content);">{{ .Title }}</span>
+      </nav>
+      
+      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2;">{{ .Title }}</h1>
+      
+      {{- if .Params.summary }}
+      <p style="font-size: 1.25rem; color: var(--secondary); margin-bottom: 2rem; line-height: 1.6;">{{ .Params.summary }}</p>
+      {{- end }}
+      
+      <!-- Meta Info -->
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+        {{- if .Params.project_type }}
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-weight: 600;">Type:</span>
+          <span style="padding: 0.25rem 0.75rem; background: var(--primary); color: var(--primary-text); border-radius: 4px; font-size: 0.875rem; text-transform: uppercase; font-weight: 600;">
+            {{ if eq .Params.project_type "tool" }}Tool{{ else }}Visual{{ end }}
+          </span>
+        </div>
+        {{- end }}
+        
+        {{- if .Date }}
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <time style="color: var(--secondary);">{{ .Date.Format "January 2006" }}</time>
+        </div>
+        {{- end }}
+        
+        {{- if .Params.tech_stack }}
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="font-weight: 600;">Tech:</span>
+          {{- range .Params.tech_stack }}
+          <span style="padding: 0.25rem 0.75rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem; font-family: 'Courier New', monospace;">
+            {{ . }}
+          </span>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="project-content" style="max-width: 900px; margin: 0 auto; padding: 0 2rem;">
+    {{- if .Params.hero_video_id }}
+    <div style="margin-bottom: 3rem;">
+      {{- $video := .Params.hero_video_id }}
+      {{ printf "{{< vimeo id=\"%s\" >}}" $video | .RenderString }}
+    </div>
+    {{- end }}
+    
+    <div class="content-body" style="line-height: 1.8; font-size: 1.125rem;">
+      {{ .Content }}
+    </div>
+    
+    <!-- Tags -->
+    {{- if .Params.tags }}
+    <div class="project-tags" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+        <span style="font-weight: 600; color: var(--secondary);">Tags:</span>
+        {{- range .Params.tags }}
+        <a href="/tags/{{ . | urlize }}/" style="padding: 0.5rem 1rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--content); font-size: 0.875rem; transition: all 0.3s;">
+          #{{ . }}
+        </a>
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
+    
+    <!-- Navigation -->
+    <nav class="project-navigation" style="margin-top: 4rem; padding: 2rem; background: var(--code-bg); border-radius: 8px; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+      {{- with .PrevInSection }}
+      <a href="{{ .Permalink }}" style="flex: 1; min-width: 200px; padding: 1.5rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--content); transition: all 0.3s;">
+        <div style="font-size: 0.875rem; color: var(--secondary); margin-bottom: 0.5rem;">← Previous Project</div>
+        <div style="font-weight: 600;">{{ .Title }}</div>
+      </a>
+      {{- end }}
+      
+      <a href="/projects/" style="padding: 1.5rem; background: var(--primary); color: var(--primary-text); border-radius: 4px; text-decoration: none; font-weight: 600; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+        All Projects
+      </a>
+      
+      {{- with .NextInSection }}
+      <a href="{{ .Permalink }}" style="flex: 1; min-width: 200px; padding: 1.5rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--content); text-align: right; transition: all 0.3s;">
+        <div style="font-size: 0.875rem; color: var(--secondary); margin-bottom: 0.5rem;">Next Project →</div>
+        <div style="font-weight: 600;">{{ .Title }}</div>
+      </a>
+      {{- end }}
+    </nav>
+    
+    <!-- CTA -->
+    <div style="margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, var(--code-bg) 0%, var(--entry) 100%); border-radius: 8px; text-align: center; border: 1px solid var(--border);">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Interested in similar work?</h3>
+      <p style="color: var(--secondary); margin-bottom: 2rem; font-size: 1.125rem;">Let's discuss how I can help with your project.</p>
+      <a href="/contact/" style="padding: 1rem 2rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 4px; font-weight: 600; display: inline-block; transition: transform 0.2s;">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+.content-body h2 {
+  color: var(--primary);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.content-body h3 {
+  color: var(--content);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.content-body p {
+  margin-bottom: 1.5rem;
+}
+
+.content-body ul, .content-body ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-body li {
+  margin-bottom: 0.75rem;
+}
+
+.content-body code {
+  background: var(--code-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.content-body pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+}
+
+.content-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.content-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.content-body blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.project-navigation a:hover,
+.project-tags a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-tags a:hover {
+  background: var(--primary);
+  color: var(--primary-text);
+  border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .project-navigation {
+    flex-direction: column;
+  }
+  
+  .project-navigation a {
+    text-align: center !important;
+  }
+}
+</style>
+
+{{- end }}

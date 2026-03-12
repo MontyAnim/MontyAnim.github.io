@@ -1,0 +1,14 @@
+{{- $user := .Get "user" -}}
+{{- $repo := .Get "repo" -}}
+{{- $file := .Get "file" -}}
+{{- $lang := .Get "lang" | default "python" -}}
+{{- $lines := .Get "lines" -}}
+
+<div class="github-code">
+  <div class="code-header">
+    <a href="https://github.com/{{ $user }}/{{ $repo }}/blob/main/{{ $file }}" target="_blank" rel="noopener">
+      📁 {{ $user }}/{{ $repo }} - {{ $file }}
+    </a>
+  </div>
+  <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2F{{ $user }}%2F{{ $repo }}%2Fblob%2Fmain%2F{{ $file }}{{ if $lines }}%23L{{ $lines }}{{ end }}&style=github&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+</div>

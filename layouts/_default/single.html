@@ -1,0 +1,14 @@
+{{- define "main" }}
+<article class="single-page" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <header style="margin-bottom: 2rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">{{ .Title }}</h1>
+    {{ if .Date }}
+    <time style="color: var(--secondary); font-size: 0.875rem;">{{ .Date.Format "January 2, 2006" }}</time>
+    {{ end }}
+  </header>
+  
+  <div class="content" style="line-height: 1.8; font-size: 1.125rem;">
+    {{ .Content }}
+  </div>
+</article>
+{{- end }}

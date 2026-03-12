@@ -1,0 +1,15 @@
+{{- $id := .Get "id" -}}
+{{- $title := .Get "title" -}}
+{{- $autoplay := .Get "autoplay" | default "0" -}}
+{{- $loop := .Get "loop" | default "0" -}}
+{{- $muted := .Get "muted" | default "0" -}}
+<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 1.5rem auto;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+    src="https://player.vimeo.com/video/{{ $id }}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&autoplay={{ $autoplay }}&loop={{ $loop }}&muted={{ $muted }}" 
+    title="{{ if $title }}{{ $title }}{{ else }}Video player{{ end }}"
+    frameborder="0" 
+    allow="autoplay; fullscreen; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>

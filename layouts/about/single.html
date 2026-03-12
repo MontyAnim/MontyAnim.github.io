@@ -1,0 +1,143 @@
+{{- define "main" }}
+
+<article class="about-page" style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
+  <!-- Hero Section -->
+  <header class="about-hero" style="text-align: center; padding: 3rem 0; margin-bottom: 4rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">{{ .Title }}</h1>
+    <p style="font-size: 1.25rem; color: var(--secondary); max-width: 600px; margin: 0 auto;">
+      Bridging the gap between art and technology
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="about-content" style="line-height: 1.8; font-size: 1.125rem;">
+    {{ .Content }}
+  </div>
+
+  <!-- Skills Highlight Grid -->
+  <div class="skills-grid" style="margin: 4rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+    <div class="skill-card" style="padding: 2rem; background: var(--code-bg); border-radius: 8px; border: 1px solid var(--border);">
+      <div style="font-size: 2rem; margin-bottom: 1rem;">🔧</div>
+      <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Tools Development</h3>
+      <p style="color: var(--secondary); line-height: 1.6;">Python-based tools and scripts that automate workflows and streamline production pipelines.</p>
+    </div>
+    
+    <div class="skill-card" style="padding: 2rem; background: var(--code-bg); border-radius: 8px; border: 1px solid var(--border);">
+      <div style="font-size: 2rem; margin-bottom: 1rem;">✨</div>
+      <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Shader Development</h3>
+      <p style="color: var(--secondary); line-height: 1.6;">Custom shaders and materials using HLSL, creating stunning visuals optimized for performance.</p>
+    </div>
+    
+    <div class="skill-card" style="padding: 2rem; background: var(--code-bg); border-radius: 8px; border: 1px solid var(--border);">
+      <div style="font-size: 2rem; margin-bottom: 1rem;">⚙️</div>
+      <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Pipeline Integration</h3>
+      <p style="color: var(--secondary); line-height: 1.6;">Seamless integration between art and engineering teams through efficient technical systems.</p>
+    </div>
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="tech-stack-section" style="margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, var(--code-bg) 0%, var(--entry) 100%); border-radius: 12px; border: 1px solid var(--border);">
+    <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">Technology Stack</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+      <div>
+        <h4 style="margin-bottom: 1rem; color: var(--primary);">3D Software</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Maya</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Blender</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">ZBrush</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Houdini</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style="margin-bottom: 1rem; color: var(--primary);">Game Engines</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Unity</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Unreal Engine</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style="margin-bottom: 1rem; color: var(--primary);">Programming</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Python</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">C#</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">HLSL</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">C++</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style="margin-bottom: 1rem; color: var(--primary);">Other Tools</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Substance Painter</span>
+          <span style="padding: 0.5rem 1rem; background: var(--entry); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem;">Adobe Suite</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="about-cta" style="text-align: center; margin: 4rem 0; padding: 3rem; background: var(--code-bg); border-radius: 8px;">
+    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Interested in working together?</h3>
+    <p style="color: var(--secondary); margin-bottom: 2rem; font-size: 1.125rem;">Check out my projects or get in touch to discuss opportunities.</p>
+    
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/projects/" style="padding: 1rem 2rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 4px; font-weight: 600; transition: transform 0.2s;">
+        View Projects
+      </a>
+      <a href="/cv/" style="padding: 1rem 2rem; background: var(--entry); border: 2px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 4px; font-weight: 600; transition: transform 0.2s;">
+        View Resume
+      </a>
+      <a href="/contact/" style="padding: 1rem 2rem; background: var(--entry); border: 2px solid var(--border); color: var(--content); text-decoration: none; border-radius: 4px; font-weight: 600; transition: transform 0.2s;">
+        Contact Me
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+.about-content h2 {
+  color: var(--primary);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+}
+
+.about-content h3 {
+  color: var(--content);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+.about-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
+}
+
+.about-cta a:hover,
+.skill-card {
+  transition: transform 0.3s;
+}
+
+.about-cta a:hover {
+  transform: translateY(-2px);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+</style>
+
+{{- end }}
