@@ -2,7 +2,7 @@
 
 <section class="hero-section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
   <!-- Subtle background -->
-  <div class="hero-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.07; background: repeating-linear-gradient(0deg, var(--content) 0px, var(--content) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, var(--content) 0px, var(--content) 1px, transparent 1px, transparent 2px); background-size: 20px 20px;"></div>
+  <div class="hero-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.06; background: repeating-linear-gradient(45deg, var(--border) 0px, var(--border) 1px, transparent 1px, transparent 18px), repeating-linear-gradient(-45deg, var(--border) 0px, var(--border) 1px, transparent 1px, transparent 18px); background-size: 18px 18px;"></div>
   
   <div class="hero-content" style="position: relative; z-index: 1; text-align: center; max-width: 800px; padding: 2rem;">
     <h1 style="font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
@@ -13,17 +13,17 @@
       Technical Artist
     </h2>
     
-    <div class="tech-stack" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; font-family: 'Courier New', monospace; font-size: 1.25rem;">
-      <span style="padding: 0.5rem 1rem; background: var(--code-bg); border-radius: 4px;">Python</span>
-      <span style="padding: 0.5rem 1rem; background: var(--code-bg); border-radius: 4px;">HLSL</span>
-      <span style="padding: 0.5rem 1rem; background: var(--code-bg); border-radius: 4px;">C#</span>
+    <div class="tech-stack" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; font-family: 'Courier New', monospace; font-size: 1.125rem;">
+      <span style="padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;">Python</span>
+      <span style="padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;">HLSL</span>
+      <span style="padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;">C#</span>
     </div>
     
     <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="/cv/" class="btn-primary" style="padding: 1rem 2rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 4px; font-weight: 600; transition: transform 0.2s; display: inline-block;">
+      <a href="/cv/" class="btn-primary" style="padding: 1rem 2rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 6px; font-weight: 600; font-family: sans-serif; transition: transform 0.2s, background 0.2s; display: inline-block;">
         View Resume
       </a>
-      <a href="#projects" style="padding: 1rem 2rem; border: 2px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 4px; font-weight: 600; transition: transform 0.2s; display: inline-block;">
+      <a href="#projects" style="padding: 1rem 2rem; border: 2px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 6px; font-weight: 600; font-family: sans-serif; transition: transform 0.2s; display: inline-block;">
         See Projects
       </a>
     </div>
@@ -47,7 +47,7 @@
 </style>
 
 <!-- Projects Section -->
-<section id="projects" style="padding: 6rem 2rem; background: var(--code-bg);">
+<section id="projects" style="padding: 6rem 2rem; background: var(--surface);">
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Featured Projects</h2>
     <p style="text-align: center; color: var(--secondary); margin-bottom: 4rem; font-size: 1.125rem;">Technical Art &amp; Development Work</p>
@@ -56,12 +56,12 @@
     {{- if $projects }}
     <div class="featured-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
       {{- range first 3 $projects }}
-      <a href="{{ .Permalink }}" class="featured-card" style="background: var(--entry); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; display: block;">
+      <a href="{{ .Permalink }}" class="featured-card" style="background: var(--entry); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: block;">
         <div style="height: 200px; overflow: hidden; background: var(--border);">
           {{- if .Params.thumbnail_url }}
           <img src="{{ .Params.thumbnail_url }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
           {{- else }}
-          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">{{ .Params.project_type | default "project" }}</div>
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; background: var(--code-bg);">{{ .Params.project_type | default "project" }}</div>
           {{- end }}
         </div>
         <div style="padding: 1.5rem;">
@@ -74,7 +74,7 @@
     {{- end }}
 
     <div style="text-align: center;">
-      <a href="/projects/" style="padding: 1rem 2.5rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 1.125rem; display: inline-block; transition: transform 0.2s;">
+      <a href="/projects/" style="padding: 1rem 2.5rem; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 6px; font-weight: 600; font-family: sans-serif; font-size: 1.125rem; display: inline-block; transition: transform 0.2s, background 0.2s;">
         {{- if $projects }}View All Projects{{- else }}Explore My Work{{- end }}
       </a>
     </div>
@@ -87,7 +87,10 @@
 }
 .featured-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 32px rgba(107, 74, 30, 0.18);
+}
+.btn-primary:hover {
+  background: var(--primary-hover) !important;
 }
 </style>
 

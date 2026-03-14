@@ -4,8 +4,6 @@ date: 2025-11-23
 draft: false
 ---
 
-# About Me
-
 I'm Diego Montúfar Pérez, a **Technical Artist** who bridges the gap between art and code. My work focuses on creating tools, shaders, and pipelines that empower artists while maintaining technical excellence.
 
 ## My Philosophy
@@ -40,6 +38,5 @@ I've worked on shipped titles including **Luma Island** and **Giggleland**, wher
 
 I'm always interested in discussing technical art challenges, sharing knowledge, and collaborating on interesting projects.
 
-**Download my full resume:** [CV Page](/cv/)
-
-**Contact:** [Get in touch](/contact/)
+{{< button link="/cv/" text="📄 View Resume" >}}
+{{< button link="/contact/" text="✉️ Get in Touch" >}}

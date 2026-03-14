@@ -4,10 +4,6 @@ date: 2025-11-23
 draft: false
 ---
 
-# Let's Connect
-
-I'm always open to discussing technical art projects, collaboration opportunities, or just talking about shaders and tools.
-
 ## Get in Touch
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
@@ -54,10 +50,6 @@ I'm always open to discussing technical art projects, collaboration opportunitie
 
 ## Quick Links
 
-- [View my portfolio](/projects/) - See my latest work
-- [Download my resume](/cv/) - Complete professional history
-- [Read about my approach](/about/) - My philosophy on technical art
-
----
-
-**Response Time:** I typically respond within 24-48 hours.
+{{< button link="/projects/" text="💼 Portfolio" >}}
+{{< button link="/cv/" text="📄 Resume" >}}
+{{< button link="/about/" text="👤 About Me" >}}
