@@ -1,0 +1,34 @@
+/* ============================================================
+   Button shortcode — styled links that look like buttons
+   in post content (overrides .post-content a box-shadow)
+   ============================================================ */
+
+.post-content a.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--tertiary);
+    border-radius: var(--radius);
+    padding: 8px 18px;
+    margin: 6px 8px 6px 0;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--primary);
+    box-shadow: none;           /* cancel the .post-content a underline shadow */
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.post-content a.button:hover {
+    background: var(--code-block-bg);
+}
+
+.post-content a.button:active {
+    transform: scale(0.97);
+}
+
+/* Wrap multiple buttons in a flex row when they sit side-by-side */
+.post-content a.button + a.button {
+    margin-left: 0;
+}

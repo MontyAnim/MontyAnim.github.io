@@ -169,6 +169,86 @@
   margin: 2rem 0;
 }
 
+/* ---- Tables ---- */
+.content-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.content-body table th,
+.content-body table td {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.content-body table th {
+  background: var(--surface);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+
+.content-body table tbody tr:hover td {
+  background: var(--surface);
+}
+
+/* ---- Buttons (shortcode) ---- */
+.content-body a.button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 1.25rem;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--content);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.content-body a.button:hover {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ---- Collapse / details ---- */
+.content-body details {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--surface);
+}
+
+.content-body details summary {
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.content-body details summary::before {
+  content: "▶  ";
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.content-body details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.content-body details > :not(summary) {
+  margin-top: 1rem;
+}
+
 .content-body blockquote {
   border-left: 4px solid var(--accent);
   padding-left: 1.5rem;
