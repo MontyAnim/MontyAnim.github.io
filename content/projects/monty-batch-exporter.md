@@ -298,13 +298,11 @@ operation — typically under 30 seconds.
 
 Monty Batch Exporter is available on three platforms:
 
+{{< button link="https://extensions.blender.org/approval-queue/batch-exporter/" text="Blender Extensions" target="_blank" >}}
+
 {{< button link="https://github.com/MontyAnim/ProjectC" text="GitHub Repository" target="_blank" >}}
 
 {{< button link="https://diegomontufar.gumroad.com/l/batchexporter" text="Gumroad" target="_blank" >}}
-
-<p style="font-size: 0.875rem; color: var(--secondary); margin-top: 0.5rem;">
-  ⏳ Blender Extensions Platform listing is pending approval.
-</p>
 
 ## Credits
 
