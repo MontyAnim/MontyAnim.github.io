@@ -194,6 +194,18 @@
   background: var(--surface);
 }
 
+/* ---- Inline links ---- */
+.content-body a:not(.button) {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.content-body a:not(.button):hover {
+  color: var(--accent);
+}
+
 /* ---- Buttons (shortcode) ---- */
 .content-body a.button {
   display: inline-flex;
