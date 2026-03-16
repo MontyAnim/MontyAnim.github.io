@@ -306,6 +306,10 @@ Monty Batch Exporter is available on three platforms:
 {{< button link="#" text="Gumroad" target="_blank" >}}
 <!-- TODO: Replace # with Gumroad product URL -->
 
+## Credits
+
+The 3D environment used in the demo video is ["Tiny Isometric Room"](https://skfb.ly/6Vy6D) by [3DECraft](https://sketchfab.com/3DECraft), licensed under [Creative Commons Attribution 4.0](http://creativecommons.org/licenses/by/4.0/).
+
 ## Retrospective
 
 ### What I Learned
