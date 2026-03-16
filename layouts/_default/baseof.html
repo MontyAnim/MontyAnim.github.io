@@ -13,54 +13,66 @@
   
   <style>
     :root {
-      --primary: #3b82f6;
-      --primary-text: #ffffff;
-      --secondary: #64748b;
-      --content: #1e293b;
-      --entry: #ffffff;
-      --border: #e2e8f0;
-      --code-bg: #f8fafc;
+      --primary: #6b4a1e;        /* warm chestnut brown */
+      --primary-hover: #4e3210;  /* darker brown on hover */
+      --primary-text: #fdf6eb;   /* warm parchment text on brown */
+      --secondary: #7a6652;      /* muted warm taupe */
+      --accent: #4a6741;         /* forest green accent */
+      --accent-text: #fdf6eb;
+      --content: #2c1f0e;        /* dark ink brown for main text */
+      --entry: #fdf8f0;          /* warm parchment page bg */
+      --surface: #f5eddd;        /* slightly darker parchment for cards */
+      --border: #d4b896;         /* warm tan border */
+      --code-bg: #ede4d3;        /* aged paper for code/muted bg */
     }
-    
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --primary: #60a5fa;
-        --primary-text: #0f172a;
-        --secondary: #94a3b8;
-        --content: #f1f5f9;
-        --entry: #1e293b;
-        --border: #334155;
-        --code-bg: #0f172a;
-      }
+
+    html[data-theme="dark"] {
+      --primary: #c49a5a;        /* golden amber brown */
+      --primary-hover: #dba96a;
+      --primary-text: #1a1008;   /* near-black on amber */
+      --secondary: #a08c74;
+      --accent: #6a9b60;         /* sage green */
+      --accent-text: #0f1f0d;
+      --content: #ede4d3;        /* parchment for dark mode text */
+      --entry: #1a1208;          /* very dark walnut bg */
+      --surface: #251b0d;        /* slightly lighter walnut */
+      --border: #4a3520;
+      --code-bg: #201507;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: Georgia, 'Times New Roman', serif;
       color: var(--content);
       background: var(--entry);
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    p, li, a, button, input, span {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
     
     .navbar {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(253, 248, 240, 0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       padding: 1rem 2rem;
     }
-    
-    @media (prefers-color-scheme: dark) {
-      .navbar {
-        background: rgba(30, 41, 59, 0.95);
-      }
+
+    html[data-theme="dark"] .navbar {
+      background: rgba(26, 18, 8, 0.96);
     }
     
     .navbar-container {
@@ -74,8 +86,10 @@
     .navbar-brand {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--content);
+      font-family: Georgia, serif;
+      color: var(--primary);
       text-decoration: none;
+      letter-spacing: 0.02em;
     }
     
     .navbar-menu {
@@ -92,7 +106,7 @@
     }
     
     .navbar-menu a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .navbar-menu a.nav-active {
@@ -160,7 +174,7 @@
         flex-direction: column;
         padding: 0 2rem;
         gap: 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 16px rgba(107, 74, 30, 0.12);
         z-index: 999;
       }
 
@@ -192,8 +206,8 @@
     }
     
     .footer {
-      background: var(--code-bg);
-      border-top: 1px solid var(--border);
+      background: var(--surface);
+      border-top: 2px solid var(--border);
       padding: 3rem 2rem;
       margin-top: 4rem;
     }
@@ -226,7 +240,7 @@
     }
     
     .footer-links a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
     
     .social-links {
@@ -250,9 +264,9 @@
     }
     
     .social-links a:hover {
-      background: var(--primary);
-      color: var(--primary-text);
-      border-color: var(--primary);
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: var(--accent);
     }
     
     .footer-bottom {
@@ -263,24 +277,64 @@
       color: var(--secondary);
       font-size: 0.875rem;
     }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--content);
+      cursor: pointer;
+      transition: all 0.3s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: var(--primary-text);
+      border-color: var(--primary);
+    }
   </style>
+
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
   <nav class="navbar">
     <div class="navbar-container">
       <a href="/" class="navbar-brand">Diego Montúfar</a>
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="navbar-menu" id="navbar-menu">
-        <li><a href="/"{{ if .IsHome }} class="nav-active"{{ end }}>Home</a></li>
-        <li><a href="/projects/"{{ if eq .Section "projects" }} class="nav-active"{{ end }}>Projects</a></li>
-        <li><a href="/about/"{{ if eq .RelPermalink "/about/" }} class="nav-active"{{ end }}>About</a></li>
-        <li><a href="/cv/"{{ if eq .RelPermalink "/cv/" }} class="nav-active"{{ end }}>Resume</a></li>
-        <li><a href="/contact/"{{ if eq .RelPermalink "/contact/" }} class="nav-active"{{ end }}>Contact</a></li>
-      </ul>
+      <div class="navbar-right">
+        <ul class="navbar-menu" id="navbar-menu">
+          <li><a href="/"{{ if .IsHome }} class="nav-active"{{ end }}>Home</a></li>
+          <li><a href="/projects/"{{ if eq .Section "projects" }} class="nav-active"{{ end }}>Projects</a></li>
+          <li><a href="/about/"{{ if eq .RelPermalink "/about/" }} class="nav-active"{{ end }}>About</a></li>
+          <li><a href="/cv/"{{ if eq .RelPermalink "/cv/" }} class="nav-active"{{ end }}>Resume</a></li>
+          <li><a href="/contact/"{{ if eq .RelPermalink "/contact/" }} class="nav-active"{{ end }}>Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
   
@@ -331,6 +385,24 @@
   </footer>
 
   <script>
+    var SUN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    var MOON_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+    function setThemeIcon(theme) {
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.innerHTML = theme === 'dark' ? SUN_ICON : MOON_ICON;
+    }
+
+    setThemeIcon(document.documentElement.getAttribute('data-theme'));
+
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      setThemeIcon(next);
+    });
+
     document.getElementById('hamburger-btn').addEventListener('click', function() {
       var menu = document.getElementById('navbar-menu');
       var isOpen = menu.classList.toggle('open');
