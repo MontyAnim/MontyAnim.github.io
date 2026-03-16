@@ -298,17 +298,19 @@ operation — typically under 30 seconds.
 
 Monty Batch Exporter is available on three platforms:
 
-{{< button link="#" text="Blender Extensions Platform" target="_blank" >}}
-<!-- TODO: Replace # with extensions.blender.org URL once approved -->
-
 {{< button link="https://github.com/MontyAnim/ProjectC" text="GitHub Repository" target="_blank" >}}
 
-{{< button link="#" text="Gumroad" target="_blank" >}}
-<!-- TODO: Replace # with Gumroad product URL -->
+{{< button link="https://diegomontufar.gumroad.com/l/batchexporter" text="Gumroad" target="_blank" >}}
+
+<p style="font-size: 0.875rem; color: var(--secondary); margin-top: 0.5rem;">
+  ⏳ Blender Extensions Platform listing is pending approval.
+</p>
 
 ## Credits
 
-The 3D environment used in the demo video is ["Tiny Isometric Room"](https://skfb.ly/6Vy6D) by [3DECraft](https://sketchfab.com/3DECraft), licensed under [Creative Commons Attribution 4.0](http://creativecommons.org/licenses/by/4.0/).
+<div style="background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 6px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.95rem;">
+  <strong>Demo scene:</strong> <a href="https://skfb.ly/6Vy6D">"Tiny Isometric Room"</a> by <a href="https://sketchfab.com/3DECraft">3DECraft</a> — <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+</div>
 
 ## Retrospective
 
